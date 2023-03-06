@@ -72,7 +72,7 @@ function handleOperation(event)
 
 	
 
-	const operate = (operation) => {
+	const operate = () => {
 
 		
 		if(this.displayedNum == "0")
@@ -99,7 +99,7 @@ function handleOperation(event)
 	}
 	else
 	{
-		operate(currentOperation);
+		operate();
 
 		this.storedOperation = currentOperation;
 	}
