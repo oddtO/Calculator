@@ -31,7 +31,7 @@ export function createCalculator(calculatorElement)
 	}
 
 
-	let calculator = Object.assign(Object.create(proto), {displayedNum: "0", storedNum: 0, currentOperation: ""});
+	let calculator = Object.assign(Object.create(proto), {displayedNum: "0", storedNum: 0, storedOperation: null});
 
 
 	calculatorElement.querySelector(".insert-buttons").addEventListener("click", handleInsert.bind(calculator));
@@ -91,9 +91,13 @@ function handleOperation(event)
 		this.displayedNum = "0";
 	}
 
-		
-	operate();
-	this.storedOperation = currentOperation;
+	if(this.storedOperation !== "")	
+		operate();
+
+	if(currentOperation != "equals")
+		this.storedOperation = currentOperation;
+	else
+		this.storedOperation = "";
 
 	this.render();
 	
