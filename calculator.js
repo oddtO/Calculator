@@ -1,5 +1,6 @@
 import * as calculatorMath from "./math.js"
-
+import {handleInsert} from "./handleInsert.js"
+import {handleOperation} from "./handleOperation.js"
 
 
 export function createCalculator(calculatorElement)
@@ -14,7 +15,7 @@ export function createCalculator(calculatorElement)
 			}
 			else
 			{
-				storedNumElem.textContent = this.storedNum == 0 ? "" : this.storedNum.toFixed(6)
+				storedNumElem.textContent = this.storedNum == 0 ? "" : Math.round(this.storedNum * 100) / 100 
 				+ " " + this.storedOperation;
 			}
 
@@ -51,78 +52,7 @@ export function createCalculator(calculatorElement)
 }
 
 
-function handleInsert(event)
-{
-	if (event.currentTarget == event.target)
-		return;
-
-	const insertDigit = (digit) => this.displayedNum += digit;
-	const removeLastDigit = () => { this.displayedNum = this.displayedNum.slice(0, -1); if(this.displayedNum == 0) this.displayedNum = "0"};
-
-	if (event.target.dataset.value == "<")
-		removeLastDigit();
-	else
-		insertDigit(event.target.dataset.value);		
-
-	this.render();
-	
-
-}
 
 
 
-function handleOperation(event)
-{
-	if (event.target == event.currentTarget)
-		return;
-
-	this.triedDivisionByZero = false;
-	let currentOperation = event.target.dataset.operation;
-
-	if(currentOperation == "clear")
-	{
-		this.displayedNum = "0";
-		this.storedNum = 0;
-		this.render();
-		return;
-	}
-
-	const operate = () => {
-
-		
-		if(!this.storedNum)
-		{
-			this.storedNum = parseFloat(this.displayedNum);
-		}
-		else
-		{
-			try
-			{
-				this.storedNum = this[this.storedOperation](this.storedNum, parseFloat(this.displayedNum));
-			}
-			catch (err)
-			{
-				this.triedDivisionByZero = true;
-				this.storedNum = 0;
-			}
-				
-
-		}
-		this.displayedNum = "0";
-	}
-
-	if(this.storedOperation !== "")	
-		operate();
-
-	if(currentOperation != "equals")
-		this.storedOperation = currentOperation;
-	else
-		this.storedOperation = "";
-
-	this.render();
-	
-
-	
-
-}
 
