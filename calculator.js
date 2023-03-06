@@ -28,7 +28,11 @@ export function createCalculator(calculatorElement)
 
 			numElem.textContent = trimmedValue;
 		}, 
-
+		resetEnteredNum()
+		{
+			this.displayedNum = "0";
+			this.hasEnteredDot = false;
+		},
 
 		add: calculatorMath.add,
 		subtract: calculatorMath.subtract,
@@ -41,7 +45,7 @@ export function createCalculator(calculatorElement)
 	}
 
 
-	let calculator = Object.assign(Object.create(proto), {displayedNum: "0", storedNum: 0, storedOperation: null, triedDivisionByZero: false});
+	let calculator = Object.assign(Object.create(proto), {displayedNum: "0", storedNum: 0, storedOperation: null, triedDivisionByZero: false, hasEnteredDot: false});
 
 
 	calculatorElement.querySelector(".insert-buttons").addEventListener("click", handleInsert.bind(calculator));

@@ -9,7 +9,7 @@ export function handleOperation(event)
 
 	if(currentOperation == "clear")
 	{
-		this.displayedNum = "0";
+		this.resetEnteredNum();
 		this.storedNum = 0;
 		this.render();
 		return;
@@ -36,7 +36,7 @@ export function handleOperation(event)
 				
 
 		}
-		this.displayedNum = "0";
+		this.resetEnteredNum();
 	}
 
 	if(this.storedOperation !== "")	
