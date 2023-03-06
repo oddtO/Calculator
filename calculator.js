@@ -7,7 +7,16 @@ export function createCalculator(calculatorElement)
 	let proto = {
 		render()
 		{
-			calculatorElement.querySelector(".stored-num").textContent = this.storedNum == 0 ? "" : this.storedNum + " " + this.storedOperation;
+			let storedNumElem = calculatorElement.querySelector(".stored-num");
+			if(this.triedDivisionByZero)
+			{
+				storedNumElem.textContent = "Division by zero is impossible";
+			}
+			else
+			{
+				storedNumElem.textContent = this.storedNum == 0 ? "" : this.storedNum.toFixed(6)
+				+ " " + this.storedOperation;
+			}
 
 			let numElem = calculatorElement.querySelector(".num");
 				
@@ -31,7 +40,7 @@ export function createCalculator(calculatorElement)
 	}
 
 
-	let calculator = Object.assign(Object.create(proto), {displayedNum: "0", storedNum: 0, storedOperation: null});
+	let calculator = Object.assign(Object.create(proto), {displayedNum: "0", storedNum: 0, storedOperation: null, triedDivisionByZero: false});
 
 
 	calculatorElement.querySelector(".insert-buttons").addEventListener("click", handleInsert.bind(calculator));
@@ -48,7 +57,7 @@ function handleInsert(event)
 		return;
 
 	const insertDigit = (digit) => this.displayedNum += digit;
-	const removeLastDigit = () => this.displayedNum = this.displayedNum.slice(0, -1);
+	const removeLastDigit = () => { this.displayedNum = this.displayedNum.slice(0, -1); if(this.displayedNum == 0) this.displayedNum = "0"};
 
 	if (event.target.dataset.value == "<")
 		removeLastDigit();
@@ -67,7 +76,7 @@ function handleOperation(event)
 	if (event.target == event.currentTarget)
 		return;
 
-
+	this.triedDivisionByZero = false;
 	let currentOperation = event.target.dataset.operation;
 
 	if(currentOperation == "clear")
@@ -81,17 +90,22 @@ function handleOperation(event)
 	const operate = () => {
 
 		
-		if(this.displayedNum == "0")
-		{
-			return;
-		}
 		if(!this.storedNum)
 		{
 			this.storedNum = parseFloat(this.displayedNum);
 		}
 		else
 		{
-			this.storedNum = this[this.storedOperation](this.storedNum, parseFloat(this.displayedNum));
+			try
+			{
+				this.storedNum = this[this.storedOperation](this.storedNum, parseFloat(this.displayedNum));
+			}
+			catch (err)
+			{
+				this.triedDivisionByZero = true;
+				this.storedNum = 0;
+			}
+				
 
 		}
 		this.displayedNum = "0";

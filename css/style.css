@@ -20,6 +20,12 @@ body
 	background-color: green;
 }
 
+
+.operation-buttons div[data-operation="equals"]
+{
+	background-color: orange;
+}
+
 .operation-buttons div 
 {
 	background-color: darkblue;
