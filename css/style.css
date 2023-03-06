@@ -77,14 +77,31 @@ body
 	display: flex;
 }
 
+
+.stored-num 
+{
+	font-size: 20px;
+	color: gray;
+}
+
+
+
+.num 
+{
+
+	font-size: 80px;
+}
+
+
+
 .input-num-container 
 {
 	width: 97%;
 	height: 80%;
 	background-color: white;
-	font-size: 80px;
 	overflow: hidden;
 	display: flex;
+	flex-direction: column;
 	justify-content: flex-end;
 	align-items: flex-end;
 }
