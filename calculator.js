@@ -70,7 +70,13 @@ function handleOperation(event)
 
 	let currentOperation = event.target.dataset.operation;
 
-	
+	if(currentOperation == "clear")
+	{
+		this.displayedNum = "0";
+		this.storedNum = 0;
+		this.render();
+		return;
+	}
 
 	const operate = () => {
 
