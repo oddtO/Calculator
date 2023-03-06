@@ -1,0 +1,114 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+body 
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.insert-buttons div 
+{
+	
+	width: 30%;
+	background-color: green;
+}
+
+.operation-buttons div 
+{
+	background-color: darkblue;
+	width: 90%;
+}
+
+.insert-buttons div,
+.operation-buttons div
+{
+	height: 15%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 50px;
+	cursor: pointer;
+	color: white;
+	user-select: none;
+}
+
+
+.insert-buttons div:active,
+.operation-buttons div:active
+{
+	transform: scale(0.95);
+}
+
+.operation-buttons 
+{
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+}
+
+.insert-buttons
+{
+	flex: 4;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	align-content: center;
+	justify-content: center;
+}
+
+.button-container 
+{
+	flex: 3;
+	display: flex;
+}
+
+.insert-buttons,
+.operation-buttons
+{
+
+	display: flex;
+}
+
+.input-num-container 
+{
+	width: 97%;
+	height: 80%;
+	background-color: white;
+	font-size: 80px;
+	overflow: hidden;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+
+.displayer 
+{
+	flex: 1;
+	background-color: gray;	
+	border: 1px solid #111;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+
+
+
+
+
+.calculator 
+{
+	display: flex;
+	flex-direction: column;
+	width: 30%;
+	height: 80%;
+	border: 1px solid #000;
+}
