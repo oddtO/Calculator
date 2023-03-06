@@ -93,16 +93,8 @@ function handleOperation(event)
 	}
 
 		
-	if(currentOperation == "equals")
-	{
-		operate(this.storedOperation);
-	}
-	else
-	{
-		operate();
-
-		this.storedOperation = currentOperation;
-	}
+	operate();
+	this.storedOperation = currentOperation;
 
 	this.render();
 	
