@@ -86,7 +86,6 @@ function handleOperation(event)
 		else
 		{
 			this.storedNum = this[this.storedOperation](this.storedNum, parseFloat(this.displayedNum));
-			this.storedOperation = event.target.dataset.operation;
 
 		}
 		this.displayedNum = "0";
