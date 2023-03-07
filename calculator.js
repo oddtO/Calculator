@@ -1,6 +1,6 @@
 import * as calculatorMath from "./math.js"
-import {handleInsert} from "./handleInsert.js"
-import {handleOperation} from "./handleOperation.js"
+import {handleInsertByClick, insert} from "./handleInsert.js"
+import {handleOperationByClick, handleOperation} from "./handleOperation.js"
 
 
 export function createCalculator(calculatorElement)
@@ -38,8 +38,9 @@ export function createCalculator(calculatorElement)
 		subtract: calculatorMath.subtract,
 		multiply: calculatorMath.multiply,
 		divide: calculatorMath.divide,
-		
 
+		insert,
+		handleOperation
 		
 
 	}
@@ -48,9 +49,9 @@ export function createCalculator(calculatorElement)
 	let calculator = Object.assign(Object.create(proto), {displayedNum: "0", storedNum: 0, storedOperation: null, triedDivisionByZero: false, hasEnteredDot: false});
 
 
-	calculatorElement.querySelector(".insert-buttons").addEventListener("click", handleInsert.bind(calculator));
+	calculatorElement.querySelector(".insert-buttons").addEventListener("click", handleInsertByClick.bind(calculator));
 
-	calculatorElement.querySelector(".operation-buttons").addEventListener("click", handleOperation.bind(calculator));
+	calculatorElement.querySelector(".operation-buttons").addEventListener("click",handleOperationByClick.bind(calculator));
 	return calculator;
 	
 }

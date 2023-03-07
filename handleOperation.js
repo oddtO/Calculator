@@ -1,11 +1,8 @@
 
-export function handleOperation(event)
+export function handleOperation(currentOperation) 
 {
-	if (event.target == event.currentTarget)
-		return;
 
 	this.triedDivisionByZero = false;
-	let currentOperation = event.target.dataset.operation;
 
 	if(currentOperation == "clear")
 	{
@@ -47,9 +44,21 @@ export function handleOperation(event)
 	else
 		this.storedOperation = "";
 
+}
+
+export function handleOperationByClick(event)
+{
+	if (event.target == event.currentTarget)
+		return;
+
+
+	let currentOperation = event.target.dataset.operation;
+
+	this.handleOperation(currentOperation);	
 	this.render();
-	
 
 	
 
 }
+
+
