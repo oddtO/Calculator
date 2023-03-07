@@ -1,7 +1,7 @@
 import * as calculatorMath from "./math.js"
 import {handleInsertByClick, insert} from "./handleInsert.js"
 import {handleOperationByClick, handleOperation} from "./handleOperation.js"
-
+import {handleKeyPress} from "./handleKeyPress.js"
 
 export function createCalculator(calculatorElement)
 {
@@ -33,6 +33,13 @@ export function createCalculator(calculatorElement)
 			this.displayedNum = "0";
 			this.hasEnteredDot = false;
 		},
+		clear()
+		{
+
+			this.resetEnteredNum();
+			this.storedNum = 0;
+			this.render();
+		},
 
 		add: calculatorMath.add,
 		subtract: calculatorMath.subtract,
@@ -52,6 +59,9 @@ export function createCalculator(calculatorElement)
 	calculatorElement.querySelector(".insert-buttons").addEventListener("click", handleInsertByClick.bind(calculator));
 
 	calculatorElement.querySelector(".operation-buttons").addEventListener("click",handleOperationByClick.bind(calculator));
+
+	window.addEventListener("keypress", handleKeyPress.bind(calculator));
+
 	return calculator;
 	
 }

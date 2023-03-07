@@ -4,11 +4,9 @@ export function handleOperation(currentOperation)
 
 	this.triedDivisionByZero = false;
 
-	if(currentOperation == "clear")
+	if(currentOperation == "C")
 	{
-		this.resetEnteredNum();
-		this.storedNum = 0;
-		this.render();
+		this.clear();
 		return;
 	}
 
@@ -39,7 +37,7 @@ export function handleOperation(currentOperation)
 	if(this.storedOperation !== "")	
 		operate();
 
-	if(currentOperation != "equals")
+	if(currentOperation != "=")
 		this.storedOperation = currentOperation;
 	else
 		this.storedOperation = "";
@@ -52,7 +50,7 @@ export function handleOperationByClick(event)
 		return;
 
 
-	let currentOperation = event.target.dataset.operation;
+	let currentOperation = event.target.dataset.value;
 
 	this.handleOperation(currentOperation);	
 	this.render();
