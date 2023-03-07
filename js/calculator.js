@@ -27,6 +27,10 @@ export function createCalculator(calculatorElement)
 				trimmedValue = "0";
 
 			numElem.textContent = trimmedValue;
+
+			let pressedBtn = calculatorElement.querySelector(`[data-value="${this.pressedKeyIdentifier}"]`);
+				pressedBtn.className = "pressed";
+			setTimeout(() => pressedBtn.className = "", 100);
 		}, 
 		resetEnteredNum()
 		{
@@ -39,6 +43,10 @@ export function createCalculator(calculatorElement)
 			this.resetEnteredNum();
 			this.storedNum = 0;
 			this.render();
+		},
+		setInsertedKeyIdentifier(identifier)
+		{
+			this.pressedKeyIdentifier = identifier;
 		},
 
 		add: calculatorMath.add,
@@ -53,7 +61,14 @@ export function createCalculator(calculatorElement)
 	}
 
 
-	let calculator = Object.assign(Object.create(proto), {displayedNum: "0", storedNum: 0, storedOperation: null, triedDivisionByZero: false, hasEnteredDot: false});
+	let calculator = Object.assign(Object.create(proto), {
+		displayedNum: "0",
+		storedNum: 0,
+		storedOperation: null,
+		triedDivisionByZero: false,
+		hasEnteredDot: false,
+		pressedKeyIdentifier: null
+	});
 
 
 	calculatorElement.querySelector(".insert-buttons").addEventListener("click", handleInsertByClick.bind(calculator));

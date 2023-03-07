@@ -31,6 +31,7 @@ export function handleKeyPress(event)
 	if(handler)
 	{
 		this[handler.func.name](handler.params);
+		this.setInsertedKeyIdentifier(handler.params);
 	}
 	this.render();
 

@@ -21,7 +21,7 @@ body
 }
 
 
-.operation-buttons div[data-operation="equals"]
+.operation-buttons div[data-value="="]
 {
 	background-color: orange;
 }
@@ -46,8 +46,8 @@ body
 }
 
 
-.insert-buttons div:active,
-.operation-buttons div:active
+.insert-buttons div.pressed,
+.operation-buttons div.pressed
 {
 	transform: scale(0.95);
 }
@@ -133,5 +133,7 @@ body
 	flex-direction: column;
 	width: 30%;
 	height: 80%;
+	min-width: 200px;
+	min-height: 600px;
 	border: 1px solid #000;
 }

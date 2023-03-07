@@ -1,7 +1,6 @@
 
 export function insert(symbol)
 {
-
 	const insertSymbol = (digit) => {
 
 
@@ -36,8 +35,9 @@ export function handleInsertByClick(event)
 {
 	if (event.currentTarget == event.target)
 		return;
-
-	this.insert(event.target.dataset.value);
+	let symbol = event.target.dataset.value;
+	this.setInsertedKeyIdentifier(symbol);
+	this.insert(symbol);
 	
 	this.render();
 

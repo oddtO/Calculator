@@ -49,8 +49,9 @@ export function handleOperationByClick(event)
 	if (event.target == event.currentTarget)
 		return;
 
-
 	let currentOperation = event.target.dataset.value;
+
+	this.setInsertedKeyIdentifier(currentOperation);
 
 	this.handleOperation(currentOperation);	
 	this.render();
