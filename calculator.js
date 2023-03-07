@@ -60,7 +60,7 @@ export function createCalculator(calculatorElement)
 
 	calculatorElement.querySelector(".operation-buttons").addEventListener("click",handleOperationByClick.bind(calculator));
 
-	window.addEventListener("keypress", handleKeyPress.bind(calculator));
+	window.addEventListener("keydown", handleKeyPress.bind(calculator));
 
 	return calculator;
 	

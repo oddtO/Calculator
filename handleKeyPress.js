@@ -4,6 +4,7 @@ const HANDLE_OPERATION = {name:"handleOperation"};
 const KEY_MAP = new Map([
 	["0", {func: INSERT, params: 0}],
 	[".", {func: INSERT, params: "."}],
+	["Backspace", {func: INSERT, params: "<"}],
 	["1", {func: INSERT, params: 1}],
 	["2", {func: INSERT, params: 2}],
 	["3", {func: INSERT, params: 3}],
@@ -13,7 +14,7 @@ const KEY_MAP = new Map([
 	["7", {func: INSERT, params: 7}],
 	["8", {func: INSERT, params: 8}],
 	["9", {func: INSERT, params: 9}],
-	["C", {func: HANDLE_OPERATION, params: "C"}],
+	["c", {func: HANDLE_OPERATION, params: "C"}],
 	["+", {func: HANDLE_OPERATION, params: "add"}],
 	["-", {func: HANDLE_OPERATION, params: "subtract"}],
 	["*", {func: HANDLE_OPERATION, params: "multiply"}],
